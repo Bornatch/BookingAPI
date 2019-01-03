@@ -14,6 +14,8 @@ namespace DemoWebApi.Controllers
 {
     public class PicturesController : ApiController
     {
+
+
         private HotelContext db = new HotelContext();
 
         // GET: api/Pictures

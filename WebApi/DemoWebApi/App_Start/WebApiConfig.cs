@@ -19,6 +19,17 @@ namespace DemoWebApi
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Routes.MapHttpRoute("Search", "api/{controller}/{dateStart}/{dateEnd}/{location}/{persons:int}",
+                    new
+                    {
+                        id = RouteParameter.Optional,
+                        dateStart = RouteParameter.Optional,
+                        dateEnd = RouteParameter.Optional,
+                        location = RouteParameter.Optional,
+                        persons = RouteParameter.Optional
+                    });
+
         }
     }
 }
