@@ -1,0 +1,86 @@
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\bin\roslyn\csc.exe
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\bin\roslyn\Microsoft.CodeAnalysis.dll
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\bin\roslyn\Microsoft.CSharp.Core.targets
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\bin\roslyn\Microsoft.VisualBasic.Core.targets
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\bin\roslyn\System.Collections.Immutable.dll
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\bin\roslyn\System.Reflection.Metadata.dll
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\bin\roslyn\vbc.exe
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\bin\roslyn\VBCSCompiler.exe
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\bin\roslyn\VBCSCompiler.exe.config
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\bin\DemoWebApi.dll.config
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\bin\DemoWebApi.dll
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\bin\DemoWebApi.pdb
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\bin\Newtonsoft.Json.dll
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\bin\System.Net.Http.Formatting.dll
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\bin\System.Web.Http.dll
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\bin\System.Web.Http.WebHost.dll
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\bin\Newtonsoft.Json.xml
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\bin\System.Net.Http.Formatting.xml
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\bin\System.Web.Http.xml
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\bin\System.Web.Http.WebHost.xml
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\obj\Debug\DemoWebApi.csprojResolveAssemblyReference.cache
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\obj\Debug\DemoWebApi.dll
+c:\users\uadmin\documents\visual studio 2015\Projects\DemoWebApi\DemoWebApi\obj\Debug\DemoWebApi.pdb
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\obj\Debug\DemoWebApi.csprojResolveAssemblyReference.cache
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\obj\Debug\DemoWebApi.dll
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\obj\Debug\DemoWebApi.pdb
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\bin\roslyn\csc.exe
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\bin\roslyn\vbc.exe
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\bin\roslyn\VBCSCompiler.exe
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\bin\DemoWebApi.dll.config
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\bin\DemoWebApi.dll
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\bin\DemoWebApi.pdb
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\bin\Newtonsoft.Json.dll
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\bin\System.Net.Http.Formatting.dll
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\bin\System.Web.Http.dll
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\bin\System.Web.Http.WebHost.dll
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\bin\Newtonsoft.Json.xml
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\bin\System.Net.Http.Formatting.xml
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\bin\System.Web.Http.xml
+C:\Users\uadmin\Desktop\web-API\DemoWebApi\DemoWebApi\bin\System.Web.Http.WebHost.xml
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\bin\roslyn\csc.exe
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\bin\roslyn\vbc.exe
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\bin\roslyn\VBCSCompiler.exe
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\bin\DemoWebApi.dll.config
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\bin\DemoWebApi.dll
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\bin\DemoWebApi.pdb
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\bin\Newtonsoft.Json.dll
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\bin\System.Net.Http.Formatting.dll
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\bin\System.Web.Http.dll
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\bin\System.Web.Http.WebHost.dll
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\bin\Newtonsoft.Json.xml
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\bin\System.Net.Http.Formatting.xml
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\bin\System.Web.Http.xml
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\bin\System.Web.Http.WebHost.xml
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\obj\Debug\DemoWebApi.csprojAssemblyReference.cache
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\obj\Debug\DemoWebApi.csproj.CoreCompileInputs.cache
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\obj\Debug\DemoWebApi.csproj.CopyComplete
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\obj\Debug\DemoWebApi.dll
+C:\Users\antoine.widmer\Desktop\coursWebAPI\web-API2\web-API\DemoWebApi\DemoWebApi\obj\Debug\DemoWebApi.pdb
