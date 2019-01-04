@@ -4,3 +4,8 @@ WebApi/.vs/DemoWebApi/v15/.suo
 WebApi/.vs/config/applicationhost.config
 WebApi/.vs/DemoWebApi/v15/.suo
 WebApi/.vs/config/applicationhost.config
+WebApi/.vs/config/applicationhost.config
+*.config
+WebApi/.vs/config/applicationhost.config
+WebApi/.vs/DemoWebApi/v15/Server/sqlite3/storage.ide-wal
+WebApi/.vs/DemoWebApi/v15/Server/sqlite3/storage.ide-shm
