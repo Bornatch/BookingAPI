@@ -12,8 +12,9 @@ namespace DemoWebApi
     {
         protected void Application_Start()
         {
-            GlobalConfiguration.Configure(WebApiConfig.Register);
-            GlobalConfiguration.Configuration.Routes.Add("default", new HttpRoute("{controller}"));
+            WebApiConfig.Register(RouteTable.Routes);
+            //GlobalConfiguration.Configuration.Routes.Add("default", new HttpRoute("{controller}"));
+            //GlobalConfiguration.Configuration.Routes.Add("Search", new HttpRoute("{controller}/dateStart/dateEnd/location/{persons:int}"));
         }
     }
 }

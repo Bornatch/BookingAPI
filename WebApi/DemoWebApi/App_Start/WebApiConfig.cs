@@ -2,28 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Routing;
 
 namespace DemoWebApi
 {
     public static class WebApiConfig
     {
-        public static void Register(HttpConfiguration config)
+        public static void Register(RouteCollection routes)
         {
             // Web API configuration and services
 
             // Web API routes
-            config.MapHttpAttributeRoutes();
-
-            config.Routes.MapHttpRoute(
+            routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            config.Routes.MapHttpRoute("Search", "api/{controller}/{dateStart}/{dateEnd}/{location}/{persons:int}",
+            
+            routes.MapHttpRoute(
+                name: "SearchAPI", 
+                routeTemplate: "api/{controller}/{action}/{dateStart}/{dateEnd}/{location}/{persons}",
+                defaults: 
                     new
                     {
-                        id = RouteParameter.Optional,
                         dateStart = RouteParameter.Optional,
                         dateEnd = RouteParameter.Optional,
                         location = RouteParameter.Optional,
