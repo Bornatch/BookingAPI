@@ -18,9 +18,7 @@ namespace DemoWebApi.Controllers
     public class HotelsController : ApiController
     {
         static String baseUri = "http://localhost:3749/api/";
-        private HotelContext db = new HotelContext();
-
-        
+        private HotelContext db = new HotelContext();        
 
         // GET: api/Hotels/GetHotel/1
         [ResponseType(typeof(Hotel))]
@@ -31,7 +29,6 @@ namespace DemoWebApi.Controllers
             {
                 return NotFound();
             }
-
             return Ok(hotel);
         }
 
@@ -150,7 +147,7 @@ namespace DemoWebApi.Controllers
 
         [ResponseType(typeof(Hotel))]
         public List<Hotel> GetAvailableHotelsAdvanced(string dateStart, string dateEnd, string location, int persons,
-            Boolean hasWifi, Boolean hasParking, int category, Boolean hasTv, Boolean hasHairDryer)
+            string hasWifiS, string hasParkingS, int category, string hasTvS, string hasHairDryerS)
         {
             //based on paramaters, this method will return a list of all possible rooms
             List<Hotel> results = new List<Hotel>();
@@ -158,6 +155,23 @@ namespace DemoWebApi.Controllers
             //the datestart is set at midnight, we had seconds in order to do accurate comparisions in the query
             DateTime dateStartdate = convertToDate(dateStart);
             DateTime dateEnddate = convertToDate(dateEnd);
+
+            var hasWifi = new Boolean();
+            var hasParking = new Boolean();
+            var hasTv = new Boolean();
+            var hasHairDryer = new Boolean();
+
+            if (hasWifiS.Equals("1"))
+                hasWifi = true;
+            
+            if (hasParkingS.Equals("1"))
+                hasParking = true;
+
+            if (hasTvS.Equals("1"))
+                hasTv = true;
+
+            if (hasHairDryerS.Equals("1"))
+                hasHairDryer = true;
 
             dateStartdate = dateStartdate.AddSeconds(86399);
             dateEnddate = dateEnddate.AddSeconds(86399);
