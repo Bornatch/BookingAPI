@@ -115,11 +115,19 @@ namespace DemoWebApi.Controllers
                     select h;
             q.Distinct();
 
+            /*
             foreach (Hotel h in q)
             {
                 results.Add(h);
             }
+            */
+            Hotel newTest = new Hotel
+            {
+                Name = "Test hotel",
+                Description = "Test for API"
+            };
 
+            results.Add(newTest);
             //.Distinct
 
             return Ok(results);
