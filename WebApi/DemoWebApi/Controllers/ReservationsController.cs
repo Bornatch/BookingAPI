@@ -23,6 +23,37 @@ namespace DemoWebApi.Controllers
             return db.Reservations;
         }
 
+        //id = id Client
+        public List<Reservation> GetAllReservations(int id)
+        {
+            List<Reservation> results = null;
+
+            var q = from res in db.Reservations
+                    where res.IdClient.Equals(id)
+                    select res
+                    ;
+
+            foreach (Reservation r in q)
+            {
+                results.Add(r);
+            }
+            return results;
+        }
+
+        public int GetLastIdReservation()
+        {
+            int id = 0;
+
+            //"SELECT TOP 1 * FROM Reservations ORDER BY idReservation DESC";
+            var q = from r in db.Reservations
+                    orderby r.IdReservation
+                    select r;
+
+            id = q.First().IdReservation;
+
+            return id;
+        }
+
         // GET: api/Reservations/5
         [ResponseType(typeof(Reservation))]
         public async Task<IHttpActionResult> GetReservation(int id)
@@ -73,12 +104,17 @@ namespace DemoWebApi.Controllers
 
         // POST: api/Reservations
         [ResponseType(typeof(Reservation))]
-        public async Task<IHttpActionResult> PostReservation(Reservation reservation)
+        public async Task<IHttpActionResult> AddNewReservation(int idClient, DateTime dateStart, DateTime dateEnd, decimal totalPrice)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            Reservation reservation = new Reservation();
+            reservation.IdClient = idClient;
+            reservation.DateStart = dateStart;
+            reservation.DateEnd = dateEnd;
+            reservation.TotalPrice = totalPrice;
 
             db.Reservations.Add(reservation);
             await db.SaveChangesAsync();
@@ -100,6 +136,22 @@ namespace DemoWebApi.Controllers
             await db.SaveChangesAsync();
 
             return Ok(reservation);
+        }
+
+        [ResponseType(typeof(RoomReservation))]
+        public async Task<IHttpActionResult> DeleteRoomReservation(int id)
+        {
+            RoomReservation roomReservation = await db.RoomReservations.FindAsync(id);
+            if(roomReservation == null)
+            {
+                return NotFound();
+            }
+
+            db.RoomReservations.Remove(roomReservation);
+            await db.SaveChangesAsync();
+
+            return Ok(roomReservation);
+
         }
 
         protected override void Dispose(bool disposing)

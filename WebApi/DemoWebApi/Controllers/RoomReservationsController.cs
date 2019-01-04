@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using DemoWebApi.Models;
+using DemoWebApi.Controllers;
 
 namespace DemoWebApi.Controllers
 {
@@ -38,37 +39,30 @@ namespace DemoWebApi.Controllers
 
         // PUT: api/RoomReservations/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutRoomReservation(int id, RoomReservation roomReservation)
+        public async Task<IHttpActionResult> AddNewRoomReservation(int idRoom, int idReservation)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            if (id != roomReservation.IdRoomReservation)
+            RoomReservation roomReservation = new RoomReservation();
+            roomReservation.Room = await db.Rooms.FindAsync(idRoom);
+            if (roomReservation.Room == null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            db.Entry(roomReservation).State = EntityState.Modified;
-
-            try
+            roomReservation.Reservation = await db.Reservations.FindAsync(idReservation);
+            if (roomReservation.Reservation == null)
             {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!RoomReservationExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return NotFound();
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+
+            db.RoomReservations.Add(roomReservation);
+            await db.SaveChangesAsync();
+
+            return CreatedAtRoute("DefaultApi", new { id = roomReservation.IdRoomReservation }, roomReservation);
         }
 
         // POST: api/RoomReservations
