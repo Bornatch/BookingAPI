@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="WebApiBookingValais" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Bornatch\\Documents\\GitHub\\BookingAPI\\WebApi\\DemoWebApi\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Bornatch\\Documents\\GitHub\\BookingAPI\\WebApi\\DemoWebApi\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="HotelContext-Web.config Connection String" description="" value="Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=HotelContext-20190102113238; Integrated Security=True; MultipleActiveResultSets=True; AttachDbFilename=|DataDirectory|HotelContext-20190102113238.mdf" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Bornatch\\Documents\\GitHub\\BookingAPI\\WebApi\\DemoWebApi\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='HotelContext']/@connectionString" />
+  </parameter>
+</parameters>

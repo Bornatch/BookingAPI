@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="HotelContext-Web.config Connection String" description="HotelContext Connection String used in web.config by the application to access the database." defaultValue="Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=HotelContext-20190102113238; Integrated Security=True; MultipleActiveResultSets=True; AttachDbFilename=|DataDirectory|HotelContext-20190102113238.mdf" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Bornatch\\Documents\\GitHub\\BookingAPI\\WebApi\\DemoWebApi\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='HotelContext']/@connectionString" />
+  </parameter>
+</parameters>
