@@ -109,13 +109,7 @@ namespace DemoWebApi.Controllers
                     where h.Location.Equals(location)
                     select h.IdHotel
                     ;
-            z.ToList();
-
-            foreach(var id in z)
-            {
-                Console.WriteLine(id);
-            }
-
+            z.ToList();           
             // Z IS WORKING !
 
             // check busy rooms (reservations during the selected dates)
@@ -133,22 +127,12 @@ namespace DemoWebApi.Controllers
 
             y.ToList();
 
-            foreach (var id in y)
-            {
-                Console.WriteLine(id);
-            }
-
             // Y IS WORKING !
-
-
             var x = from r in db.Rooms
                     where !y.Contains(r.IdRoom) && z.Contains(r.IdHotel)
                     select r.IdRoom;
-
             x.ToList();
-
             // X IS WORKING !
-
             var q = from h in db.Hotels
                     join r in db.Rooms
                     on h.IdHotel equals r.IdHotel
@@ -156,13 +140,171 @@ namespace DemoWebApi.Controllers
                     select h;
             q.Distinct();
             q.ToList();
-
             foreach (Hotel h in q.Distinct())
             {
                 results.Add(h);
             }
+            return results;
 
+        }
 
+        [ResponseType(typeof(Hotel))]
+        public List<Hotel> GetAvailableHotelsAdvanced(string dateStart, string dateEnd, string location, int persons,
+            Boolean hasWifi, Boolean hasParking, int category, Boolean hasTv, Boolean hasHairDryer)
+        {
+            //based on paramaters, this method will return a list of all possible rooms
+            List<Hotel> results = new List<Hotel>();
+
+            //the datestart is set at midnight, we had seconds in order to do accurate comparisions in the query
+            DateTime dateStartdate = convertToDate(dateStart);
+            DateTime dateEnddate = convertToDate(dateEnd);
+
+            dateStartdate = dateStartdate.AddSeconds(86399);
+            dateEnddate = dateEnddate.AddSeconds(86399);
+
+            List<Hotel> all = db.Hotels.ToList();
+
+            /* isolation of each select from SQL
+             * SELECT DISTINCT Hotel.IdHotel, Name, Hotel.Description, Location, Category, HasWifi, HasParking, Phone, Email, Website 
+                FROM Hotel 
+                INNER JOIN Room ON Room.IdHotel = Hotel.IdHotel 
+                WHERE Room.IdHotel IN( 
+                        SELECT Room.IdHotel 
+                        FROM Room 
+                        WHERE IdRoom NOT IN( 
+                                SELECT Room.IdRoom 
+                                FROM Room 
+                                INNER JOIN RoomReservation ON Room.IdRoom = RoomReservation.IdRoom 
+                                INNER JOIN Reservation ON RoomReservation.IdReservation = Reservation.idReservation 
+                                INNER JOIN Hotel ON Room.IdHotel = Hotel.IdHotel 
+                                WHERE(@DateStart <= Reservation.DateEnd) 
+                                AND (@DateEnd >= Reservation.DateStart) 
+                                AND Room.Type != @Persons "
+            */
+
+            //check HairDryer
+            var hairDryerList = new List<int>();
+            if (hasHairDryer == true)
+            {
+                var hairDryer = from r in db.Rooms
+                                where r.HasHairDryer.Equals(hasHairDryer)
+                                select r.IdHotel
+                                ;
+                hairDryerList = hairDryer.ToList();
+            }
+            else
+            {
+                var hairDryer = from h in db.Hotels
+                                select h.IdHotel;
+                hairDryerList = hairDryer.ToList();
+            }
+
+            //check Tv
+            var tvList = new List<int>();
+            if (hasTv == true)
+            {
+                var tv = from r in db.Rooms
+                         where r.HasTV.Equals(hasTv)
+                         select r.IdHotel
+                         ;
+                tvList = tv.ToList();
+            }
+            else
+            {
+                var tv = from h in db.Hotels
+                         select h.IdHotel;
+                tvList = tv.ToList();
+            }
+
+            //check Category
+            var stars = from h in db.Hotels
+                        where h.Category >= category
+                        select h.IdHotel
+                        ;
+
+            //check Parking
+            var parcList = new List<int>();
+            if (hasParking == true)
+            {
+                var parc = from h in db.Hotels
+                           where h.HasParking.Equals(hasParking)
+                           select h.IdHotel
+                           ;
+                parcList = parc.ToList();
+            }
+            else
+            {
+                var parc = from h in db.Hotels
+                           select h.IdHotel;
+                parcList = parc.ToList();
+            }
+
+            //check Wifi
+            var wifiList = new List<int>();
+            if (hasWifi == true)
+            {
+                var wifi = from h in db.Hotels
+                           where h.HasWifi.Equals(hasWifi)
+                           select h.IdHotel
+                           ;
+                wifiList = wifiList.ToList();
+            }
+            else
+            {
+                var wifi = from h in db.Hotels
+                           select h.IdHotel
+                           ;
+                wifiList = wifiList.ToList();
+            }
+                
+
+            // check location
+            // generates a list of hotels that are in the desired location
+            var loc = from h in db.Hotels
+                      where h.Location.Equals(location)
+                      select h.IdHotel
+                      ;
+            loc.ToList();
+            // Zloc IS WORKING !            
+
+            // check busy rooms (reservations during the selected dates)
+            // generates a list of rooms that are already booked
+            var busy = from r in db.Rooms
+                       join rresa in db.RoomReservations
+                       on r.IdRoom equals rresa.Room.IdRoom
+                       join res in db.Reservations
+                       on rresa.Reservation.IdReservation equals res.IdReservation
+                       join h in db.Hotels
+                       on r.IdHotel equals h.IdHotel
+                       where (dateStartdate <= res.DateStart &&
+                       dateEnddate >= res.DateEnd)
+                       select r.IdRoom;
+
+            busy.ToList();
+
+            // Ybusy IS WORKING !
+            var roomsOk = from r in db.Rooms
+                    where !busy.Contains(r.IdRoom) 
+                    && loc.Contains(r.IdHotel)
+                    && wifiList.Contains(r.IdHotel)
+                    && parcList.Contains(r.IdHotel)
+                    && stars.Contains(r.IdHotel)
+                    && tvList.Contains(r.IdHotel)
+                    && hairDryerList.Contains(r.IdHotel)
+                          select r.IdRoom;
+            roomsOk.ToList();
+            // XroomsOK IS WORKING !
+            var q = from h in db.Hotels
+                    join r in db.Rooms
+                    on h.IdHotel equals r.IdHotel
+                    where roomsOk.Contains(r.IdRoom)
+                    select h;
+            q.Distinct();
+            q.ToList();
+            foreach (Hotel h in q.Distinct())
+            {
+                results.Add(h);
+            }
             return results;
 
         }

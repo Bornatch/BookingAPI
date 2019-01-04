@@ -1,2 +1,10 @@
 # Object folder
 
+WebApi/DemoWebApi/App_Data/HotelContext-20190102113238_log.ldf
+WebApi/DemoWebApi/App_Data/HotelContext-20190102113238.mdf
+WebApi/.vs/DemoWebApi/v15/Server/sqlite3/storage.ide-wal
+WebApi/.vs/DemoWebApi/v15/.suo
+WebApi/.vs/DemoWebApi/v15/Server/sqlite3/storage.ide
+WebApi/DemoWebApi/bin/DemoWebApi.dll
+WebApi/DemoWebApi/bin/DemoWebApi.dll.config
+WebApi/DemoWebApi/bin/DemoWebApi.pdb

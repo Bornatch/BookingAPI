@@ -39,8 +39,8 @@ namespace DemoWebApi.Controllers
 
         // GET: api/Hotels/5/Rooms
         [ResponseType(typeof(Picture))]
-        [Route("api/Hotels/{id}/pictures")]
-        public async Task<IHttpActionResult> GetRoomsHotel(int id)
+        //[Route("api/pictures/GetRoomsHotel/")]
+        public async Task<IHttpActionResult> GetPicturesHotel(int id)
         {
             Hotel hotel = await db.Hotels.FindAsync(id);
             if (hotel == null)
@@ -65,6 +65,28 @@ namespace DemoWebApi.Controllers
             
 
           return Ok(pictures);
+        }
+
+        // GET: api/Hotels/5/Rooms
+        [ResponseType(typeof(Picture))]
+        //[Route("api/pictures/GetRoomsHotel/")]
+        public async Task<IHttpActionResult> GetPicturesRoom(int id)
+        {
+            Room r = await db.Rooms.FindAsync(id);
+            if (r == null)
+            {
+                return NotFound();
+            }
+            
+            List<Picture> pictures = new List<Picture>();
+            
+            foreach (Picture p in db.Pictures)
+            {
+                if (p.Room == r)
+                    pictures.Add(p);
+            }               
+
+            return Ok(pictures);
         }
 
         // PUT: api/Pictures/5
