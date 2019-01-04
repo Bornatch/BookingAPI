@@ -36,9 +36,34 @@ namespace DemoWebApi.Controllers
         }
 
 
+        // GET: api/Hotels/5/Rooms
+        [ResponseType(typeof(Room))]
+        [Route("api/Hotels/{id}/rooms")]
+        public async Task<IHttpActionResult> GetRoomsHotel(int id)
+        {
+            Hotel hotel = await db.Hotels.FindAsync(id);
+            if (hotel == null)
+            {
+                return NotFound();
+            }
+
+            List<Room> rooms = new List<Room>();
+
+            foreach (Room r in db.Rooms)
+            {
+                if (r.IdHotel == id)
+                    rooms.Add(r);
+            }       
+
+
+            return Ok(rooms);
+        }
+
+
         //GET : api/Hotels/GetAvailableHotels/1
         [ResponseType(typeof(Hotel))]
         public List<Hotel> GetAvailableHotels(string dateStart, string dateEnd, string location, int persons)
+
         {
             //,string dateEnd, string location, int persons
             //based on paramaters, this method will return a list of all possible rooms
