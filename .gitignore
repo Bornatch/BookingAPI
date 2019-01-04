@@ -13,3 +13,4 @@ WebApi/.vs/DemoWebApi/v15/Server/sqlite3/storage.ide-shm
 *.ide-shm
 WebApi/.vs/DemoWebApi/v15/Server/sqlite3/storage.ide-wal
 WebApi/DemoWebApi/bin/DemoWebApi.dll
+WebApi/DemoWebApi/obj/Debug/WebApi.csproj.FileListAbsolute.txt
