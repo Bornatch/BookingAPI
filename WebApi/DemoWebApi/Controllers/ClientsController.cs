@@ -25,15 +25,22 @@ namespace DemoWebApi.Controllers
 
         // GET: api/Clients/5
         [ResponseType(typeof(Client))]
-        public async Task<IHttpActionResult> GetClient(int id)
+        public Client GetClient(string surname, string name, string password)
         {
-            Client client = await db.Clients.FindAsync(id);
-            if (client == null)
-            {
-                return NotFound();
-            }
+            List<Client> client = null;
 
-            return Ok(client);
+            var q = from c in db.Clients
+                    where c.Surname.Equals(surname) && c.Name.Equals(name) && c.Password.Equals(password)
+                    select c
+                    ;
+            q.Distinct();
+
+            client = q.ToList();
+
+            if (client.Count == 0)
+                return null;
+            else
+                return client[0];
         }
 
         // PUT: api/Clients/5
