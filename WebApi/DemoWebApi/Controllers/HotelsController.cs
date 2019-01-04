@@ -39,7 +39,30 @@ namespace DemoWebApi.Controllers
             return Ok(hotel);
         }
 
-        
+        // GET: api/Hotels/5/Rooms
+        [ResponseType(typeof(Room))]
+        [Route("api/Hotels/{id}/rooms")]
+        public async Task<IHttpActionResult> GetRoomsHotel(int id)
+        {
+            Hotel hotel = await db.Hotels.FindAsync(id);
+            if (hotel == null)
+            {
+                return NotFound();
+            }
+
+            List<Room> rooms = new List<Room>();
+
+            foreach (Room r in db.Rooms)
+            {
+                if (r.IdHotel == id)
+                    rooms.Add(r);
+            }       
+
+
+            return Ok(rooms);
+        }
+
+
         //GET : api/Hotels/
         //[HttpGet]
         //[Route("api/Hotels/id/dateStart/dateEnd/location/{persons:int}")]
