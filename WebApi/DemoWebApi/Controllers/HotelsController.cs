@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
 using DemoWebApi.Models;
@@ -16,6 +17,7 @@ namespace DemoWebApi.Controllers
 {
     public class HotelsController : ApiController
     {
+        static String baseUri = "http://localhost:3749/api/";
         private HotelContext db = new HotelContext();
 
         // GET: api/Hotels
@@ -37,13 +39,21 @@ namespace DemoWebApi.Controllers
             return Ok(hotel);
         }
 
+        
         //GET : api/Hotels/
-        public async Task<IHttpActionResult> GetAvailableHotels(DateTime dateStart, DateTime dateEnd, string location, int persons)
+        //[HttpGet]
+        //[Route("api/Hotels/id/dateStart/dateEnd/location/{persons:int}")]
+        [ResponseType(typeof(List<Hotel>))]
+        [Route("api/Hotels/dateStart/dateEnd/location/{persons:int}")]
+        public async Task<IHttpActionResult> GetAvailableHotels(string dateStartText, string dateEndText, string location, int persons)
         {
             //based on paramaters, this method will return a list of all possible rooms
             List<Hotel> results = new List<Hotel>();
 
             //the datestart is set at midnight, we had seconds in order to do accurate comparisions in the query
+            DateTime dateStart = convertToDate(dateStartText);
+            DateTime dateEnd = convertToDate(dateEndText);
+
             dateStart = dateStart.AddSeconds(86399);
             dateEnd = dateEnd.AddSeconds(86399);
 
@@ -110,9 +120,21 @@ namespace DemoWebApi.Controllers
                 results.Add(h);
             }
 
-                //.Distinct
-     
+            //.Distinct
+
             return Ok(results);
+
+        }
+
+        public DateTime convertToDate(string dateText)
+        {
+            DateTime result = new DateTime(1000, 01, 01);
+
+            result.Day.Equals(dateText.Substring(0, 2));
+            result.Month.Equals(dateText.Substring(3, 5));
+            result.Year.Equals(dateText.Substring(6, 8));
+
+            return result;
         }
 
         // PUT: api/Hotels/5
