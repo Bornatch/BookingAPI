@@ -37,8 +37,9 @@ namespace DemoWebApi.Controllers
             return Ok(roomReservation);
         }
 
-        // PUT: api/RoomReservations/5
+        //api/RoomReservations/AddNewRoomReservation/1/1
         [ResponseType(typeof(void))]
+        [AcceptVerbs("GET", "INSERT")]
         public async Task<IHttpActionResult> AddNewRoomReservation(int idRoom, int idReservation)
         {
             if (!ModelState.IsValid)

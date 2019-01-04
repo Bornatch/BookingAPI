@@ -68,7 +68,7 @@ namespace DemoWebApi.Controllers
             //,string dateEnd, string location, int persons
             //based on paramaters, this method will return a list of all possible rooms
             List<Hotel> results = new List<Hotel>();
-
+            
             //the datestart is set at midnight, we had seconds in order to do accurate comparisions in the query
             DateTime dateStartdate = convertToDate(dateStart);
             DateTime dateEnddate = convertToDate(dateEnd);
@@ -175,16 +175,13 @@ namespace DemoWebApi.Controllers
 
         public DateTime convertToDate(string dateText)
         {
-            DateTime result = new DateTime(1000, 01, 01);
-            //09-01-2019
             string day = dateText.Substring(0, 2);
             string month = dateText.Substring(3, 2);
             string year = dateText.Substring(6, 4);
 
-            result.Day.Equals(day);
-            result.Month.Equals(month);
-            result.Year.Equals(year);
-
+            DateTime result = new DateTime(Convert.ToInt32(year),
+                                            Convert.ToInt32(month), 
+                                            Convert.ToInt32(day));
             return result;
         }
 

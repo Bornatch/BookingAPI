@@ -102,19 +102,27 @@ namespace DemoWebApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Reservations
+        // POST: api/Reservations/AddNewReservation/1/01-01-2019/02-01-2019/13.0
+        [AcceptVerbs("GET", "DELETE")]
         [ResponseType(typeof(Reservation))]
-        public async Task<IHttpActionResult> AddNewReservation(int idClient, DateTime dateStart, DateTime dateEnd, decimal totalPrice)
+        public async Task<IHttpActionResult> AddNewReservation(int idClient, string dateStart, string dateEnd, string totalPrice)
         {
+            //the datestart is set at midnight, we had seconds in order to do accurate comparisions in the query
+            DateTime dateStartdate = convertToDate(dateStart);
+            DateTime dateEnddate = convertToDate(dateEnd);
+
+            dateStartdate = dateStartdate.AddSeconds(86399);
+            dateEnddate = dateEnddate.AddSeconds(86399);
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
             Reservation reservation = new Reservation();
             reservation.IdClient = idClient;
-            reservation.DateStart = dateStart;
-            reservation.DateEnd = dateEnd;
-            reservation.TotalPrice = totalPrice;
+            reservation.DateStart = dateStartdate;
+            reservation.DateEnd = dateEnddate;
+            reservation.TotalPrice = Convert.ToDecimal(totalPrice);
 
             db.Reservations.Add(reservation);
             await db.SaveChangesAsync();
@@ -122,7 +130,8 @@ namespace DemoWebApi.Controllers
             return CreatedAtRoute("DefaultApi", new { id = reservation.IdReservation }, reservation);
         }
 
-        // DELETE: api/Reservations/5
+        // DELETE: api/Reservations/DeleteReservation/5
+        [AcceptVerbs("GET", "DELETE")]
         [ResponseType(typeof(Reservation))]
         public async Task<IHttpActionResult> DeleteReservation(int id)
         {
@@ -138,6 +147,7 @@ namespace DemoWebApi.Controllers
             return Ok(reservation);
         }
 
+        [AcceptVerbs("GET", "DELETE")]
         [ResponseType(typeof(RoomReservation))]
         public async Task<IHttpActionResult> DeleteRoomReservation(int id)
         {
@@ -167,5 +177,17 @@ namespace DemoWebApi.Controllers
         {
             return db.Reservations.Count(e => e.IdReservation == id) > 0;
         }
-    }
+
+        public DateTime convertToDate(string dateText)
+        {
+            string day = dateText.Substring(0, 2);
+            string month = dateText.Substring(3, 2);
+            string year = dateText.Substring(6, 4);
+
+            DateTime result = new DateTime(Convert.ToInt32(year),
+                                            Convert.ToInt32(month),
+                                            Convert.ToInt32(day));
+            return result;
+        }
+    }  
 }

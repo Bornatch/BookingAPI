@@ -13,12 +13,20 @@ namespace DemoWebApi
             // Web API configuration and services
 
             // Web API routes
+            
             routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
 
+            routes.MapHttpRoute(
+                name: "InsertRoomReservation",
+                routeTemplate: "api/{controller}/AddNewRoomReservation/{idRoom}/{idReservation}");
+
+            routes.MapHttpRoute(
+                name: "InsertReservation",
+                routeTemplate: "api/{controller}/AddNewReservation/{idClient}/{dateStart}/{dateEnd}/{totalPrice}");
 
             routes.MapHttpRoute(
                 name: "SearchAPI",
