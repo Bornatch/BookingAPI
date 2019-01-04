@@ -35,7 +35,7 @@ namespace DemoWebApi.Controllers
             return Ok(hotel);
         }
 
-<<<<<<< HEAD
+
         // GET: api/Hotels/5/Rooms
         [ResponseType(typeof(Room))]
         [Route("api/Hotels/{id}/rooms")]
@@ -60,18 +60,10 @@ namespace DemoWebApi.Controllers
         }
 
 
-        //GET : api/Hotels/
-        //[HttpGet]
-        //[Route("api/Hotels/id/dateStart/dateEnd/location/{persons:int}")]
-        [ResponseType(typeof(List<Hotel>))]
-        [Route("api/Hotels/dateStart/dateEnd/location/{persons:int}")]
-        public async Task<IHttpActionResult> GetAvailableHotels(string dateStartText, string dateEndText, string location, int persons)
-=======
-
         //GET : api/Hotels/GetAvailableHotels/1
         [ResponseType(typeof(Hotel))]
         public List<Hotel> GetAvailableHotels(string dateStart, string dateEnd, string location, int persons)
->>>>>>> 37c9851e477eb0c8eaccafccbb6aaf669d903bb9
+
         {
             //,string dateEnd, string location, int persons
             //based on paramaters, this method will return a list of all possible rooms
