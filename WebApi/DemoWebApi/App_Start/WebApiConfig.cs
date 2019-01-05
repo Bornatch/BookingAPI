@@ -36,8 +36,8 @@ namespace DemoWebApi
 
             routes.MapHttpRoute(
                 name: "SearchAdvancedAPI",
-                routeTemplate: "api/{controller}/{action}/{dateStart}/{dateEnd}/{location}/{persons}/{hasWifi}/{hasParking}" +
-                "/{category}/{hasTV}/{hasHairDryer}");
+                routeTemplate: "api/{controller}/{action}/{dateStart}/{dateEnd}/{location}/{persons}/{hasWifiS}/{hasParkingS}" +
+                "/{category}/{hasTVS}/{hasHairDryerS}");
 
             routes.MapHttpRoute(
                 name: "ClientAPI",

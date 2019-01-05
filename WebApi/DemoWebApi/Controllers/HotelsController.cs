@@ -207,7 +207,7 @@ namespace DemoWebApi.Controllers
                                 where r.HasHairDryer.Equals(hasHairDryer)
                                 select r.IdHotel
                                 ;
-                hairDryerList = hairDryer.ToList();
+                hairDryerList = hairDryer.Distinct().ToList();
             }
             else
             {
@@ -215,30 +215,8 @@ namespace DemoWebApi.Controllers
                                 select h.IdHotel;
                 hairDryerList = hairDryer.ToList();
             }
-
-            //check Tv
-            var tvList = new List<int>();
-            if (hasTv == true)
-            {
-                var tv = from r in db.Rooms
-                         where r.HasTV.Equals(hasTv)
-                         select r.IdHotel
-                         ;
-                tvList = tv.ToList();
-            }
-            else
-            {
-                var tv = from h in db.Hotels
-                         select h.IdHotel;
-                tvList = tv.ToList();
-            }
-
-            //check Category
-            var stars = from h in db.Hotels
-                        where h.Category >= category
-                        select h.IdHotel
-                        ;
-
+            hairDryerList.ToList();
+            
             //check Parking
             var parcList = new List<int>();
             if (hasParking == true)
@@ -255,7 +233,30 @@ namespace DemoWebApi.Controllers
                            select h.IdHotel;
                 parcList = parc.ToList();
             }
-
+            parcList.ToList();
+            //check Category
+            var stars = from h in db.Hotels
+                        where h.Category >= category
+                        select h.IdHotel
+                        ;
+            stars.ToList();
+            //check Tv
+            var tvList = new List<int>();
+            if (hasTv == true)
+            {
+                var tv = from r in db.Rooms
+                         where r.HasTV.Equals(hasTv)
+                         select r.IdHotel
+                         ;
+                tvList = tv.Distinct().ToList();
+            }
+            else
+            {
+                var tv = from h in db.Hotels
+                         select h.IdHotel;
+                tvList = tv.ToList();
+            }
+            tvList.ToList();
             //check Wifi
             var wifiList = new List<int>();
             if (hasWifi == true)
@@ -264,17 +265,18 @@ namespace DemoWebApi.Controllers
                            where h.HasWifi.Equals(hasWifi)
                            select h.IdHotel
                            ;
-                wifiList = wifiList.ToList();
+                wifiList = wifi.ToList();
             }
             else
             {
                 var wifi = from h in db.Hotels
                            select h.IdHotel
                            ;
-                wifiList = wifiList.ToList();
+                wifiList = wifi.ToList();
             }
-                
+            //wifiList.ToList();
 
+            
             // check location
             // generates a list of hotels that are in the desired location
             var loc = from h in db.Hotels
@@ -302,14 +304,32 @@ namespace DemoWebApi.Controllers
             // Ybusy IS WORKING !
             var roomsOk = from r in db.Rooms
                     where !busy.Contains(r.IdRoom) 
-                    && loc.Contains(r.IdHotel)
-                    && wifiList.Contains(r.IdHotel)
+                    && loc.Contains(r.IdHotel)                  
+                    && wifiList.Contains(r.IdHotel)  
                     && parcList.Contains(r.IdHotel)
                     && stars.Contains(r.IdHotel)
-                    && tvList.Contains(r.IdHotel)
-                    && hairDryerList.Contains(r.IdHotel)
+                    && tvList.Distinct().Contains(r.IdHotel)
+                    && hairDryerList.Distinct().Contains(r.IdHotel)                    
                           select r.IdRoom;
+
             roomsOk.ToList();
+            /*
+            foreach (int i in roomsOk.Distinct())
+            {
+                var allHotelsTest = db.Hotels;
+                foreach (Hotel h in allHotelsTest)
+                {
+                    if (h.IdHotel == i)
+                    {
+                        results.Add(h);
+                    }
+                }
+            }
+            
+
+            return results;
+            */
+
             // XroomsOK IS WORKING !
             var q = from h in db.Hotels
                     join r in db.Rooms
