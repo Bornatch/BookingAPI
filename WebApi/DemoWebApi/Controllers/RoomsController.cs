@@ -17,10 +17,96 @@ namespace DemoWebApi.Controllers
     {
         private HotelContext db = new HotelContext();
 
-        // GET: api/Rooms
-        public IQueryable<Room> GetRooms()
+        public List<Room> GetAllRoomsByListId(List<int> idRooms)
         {
-            return db.Rooms;
+            List<Room> ListOfRooms = new List<Room>();
+
+            for (int i = 0; i < idRooms.Count; i++)
+            {
+                ListOfRooms.Add(GetRoomById(idRooms[i]));
+            }
+
+            return ListOfRooms;
+        }
+
+        public Room GetRoomById(int id)
+        //id = idRoom
+        {
+            Room result = db.Rooms.Find(id);
+
+            return result;
+        }
+
+
+        //api/Rooms/GetRooms/1/01-01-2019/01-02-2019
+        public List<Room> GetRooms(int idHotel, string dateStart, string dateEnd)
+        {
+            DateTime dateStartdate = convertToDate(dateStart);
+            DateTime dateEnddate = convertToDate(dateEnd);
+
+            // (1) Get list of IdRooms from unavailable rooms
+            var y = from r in db.Rooms
+                    join rresa in db.RoomReservations
+                    on r.IdRoom equals rresa.Room.IdRoom
+                    join res in db.Reservations
+                    on rresa.Reservation.IdReservation equals res.IdReservation
+                    join h in db.Hotels
+                    on r.IdHotel equals h.IdHotel
+                    where (dateStartdate <= res.DateStart &&
+                           dateEnddate >= res.DateEnd)
+                    select r.IdRoom;
+
+            y.ToList();
+
+            // (2) Get all available rooms from desired hotel
+            var x = from r in db.Rooms
+                    where r.IdHotel.Equals(idHotel) && !y.Contains(r.IdRoom)
+                    select r;
+
+            
+
+            List<Room> results = new List<Room>();
+            int totalNumberOfAvailableRooms = x.Count();
+            int totalNumberRooms = CountAllRooms(idHotel);
+
+            foreach (Room r in x.ToList())
+            {
+                // (3) Modify price if criteria is met before adding to list of results
+                
+                //count number of nights
+                //source : https://stackoverflow.com/questions/33345344/calculate-number-of-nights-between-2-datetimes
+
+                var frm = dateStartdate < dateEnddate ? dateStartdate : dateEnddate;
+                var to = dateStartdate < dateEnddate ? dateEnddate : dateStartdate;
+                int totalDays = (int)(to - frm).TotalDays;
+
+
+                //if booked over 70%, increase price by 20%
+                if (totalNumberOfAvailableRooms <= totalNumberRooms * 30 / 100)
+                {
+                    r.Price = (decimal)r.Price * 120 / 100 * totalDays;
+                }
+                else
+                {
+                    r.Price = (decimal)r.Price * totalDays;
+                }
+
+                results.Add(r);
+            }
+
+            return results;
+        }
+
+        public int CountAllRooms(int id)
+            //id = idHotel
+        {
+            int result = 0;
+            var x = from r in db.Rooms
+                    where r.IdHotel.Equals(id)
+                    select r;
+            result = x.Count();
+
+            return result;
         }
 
         // GET: api/Rooms/5
@@ -114,6 +200,18 @@ namespace DemoWebApi.Controllers
         private bool RoomExists(int id)
         {
             return db.Rooms.Count(e => e.IdRoom == id) > 0;
+        }
+
+        public DateTime convertToDate(string dateText)
+        {
+            string day = dateText.Substring(0, 2);
+            string month = dateText.Substring(3, 2);
+            string year = dateText.Substring(6, 4);
+
+            DateTime result = new DateTime(Convert.ToInt32(year),
+                                            Convert.ToInt32(month),
+                                            Convert.ToInt32(day));
+            return result;
         }
     }
 }

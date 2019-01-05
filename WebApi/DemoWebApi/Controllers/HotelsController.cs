@@ -129,6 +129,7 @@ namespace DemoWebApi.Controllers
                     where !y.Contains(r.IdRoom) && z.Contains(r.IdHotel)
                     select r.IdRoom;
             x.ToList();
+
             // X IS WORKING !
             var q = from h in db.Hotels
                     join r in db.Rooms
