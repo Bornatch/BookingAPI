@@ -145,6 +145,7 @@ namespace DemoWebApi.Controllers
 
         }
 
+        //GET : api/Hotels/GetAvailableHotelsAdvanced/1
         [ResponseType(typeof(Hotel))]
         public List<Hotel> GetAvailableHotelsAdvanced(string dateStart, string dateEnd, string location, int persons,
             string hasWifiS, string hasParkingS, int category, string hasTvS, string hasHairDryerS)
@@ -156,23 +157,25 @@ namespace DemoWebApi.Controllers
             DateTime dateStartdate = convertToDate(dateStart);
             DateTime dateEnddate = convertToDate(dateEnd);
 
+            
             var hasWifi = new Boolean();
             var hasParking = new Boolean();
             var hasTv = new Boolean();
             var hasHairDryer = new Boolean();
 
-            if (hasWifiS.Equals("1"))
+            if (hasWifiS.Equals("true"))
                 hasWifi = true;
             
-            if (hasParkingS.Equals("1"))
+            if (hasParkingS.Equals("true"))
                 hasParking = true;
 
-            if (hasTvS.Equals("1"))
+            if (hasTvS.Equals("true"))
                 hasTv = true;
 
-            if (hasHairDryerS.Equals("1"))
+            if (hasHairDryerS.Equals("true"))
                 hasHairDryer = true;
 
+            
             dateStartdate = dateStartdate.AddSeconds(86399);
             dateEnddate = dateEnddate.AddSeconds(86399);
 

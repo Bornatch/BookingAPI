@@ -28,9 +28,16 @@ namespace DemoWebApi
                 name: "InsertReservation",
                 routeTemplate: "api/{controller}/AddNewReservation/{idClient}/{dateStart}/{dateEnd}/{totalPrice}");
 
+            
             routes.MapHttpRoute(
                 name: "SearchAPI",
                 routeTemplate: "api/{controller}/{action}/{dateStart}/{dateEnd}/{location}/{persons}");
+            
+
+            routes.MapHttpRoute(
+                name: "SearchAdvancedAPI",
+                routeTemplate: "api/{controller}/{action}/{dateStart}/{dateEnd}/{location}/{persons}/{hasWifi}/{hasParking}" +
+                "/{category}/{hasTV}/{hasHairDryer}");
 
             routes.MapHttpRoute(
                 name: "ClientAPI",
