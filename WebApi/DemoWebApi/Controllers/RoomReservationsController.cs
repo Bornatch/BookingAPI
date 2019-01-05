@@ -39,7 +39,7 @@ namespace DemoWebApi.Controllers
 
         //api/RoomReservations/AddNewRoomReservation/1/1
         [ResponseType(typeof(void))]
-        [AcceptVerbs("GET", "INSERT")]
+        [AcceptVerbs("GET", "PUT")]
         public async Task<IHttpActionResult> AddNewRoomReservation(int idRoom, int idReservation)
         {
             if (!ModelState.IsValid)
@@ -85,8 +85,21 @@ namespace DemoWebApi.Controllers
         [AcceptVerbs("GET", "DELETE")]
         [ResponseType(typeof(RoomReservation))]
         public async Task<IHttpActionResult> DeleteRoomReservation(int id)
+            //id = idReservation
         {
-            RoomReservation roomReservation = await db.RoomReservations.FindAsync(id);
+            var q = from roomRes in db.RoomReservations
+                    where roomRes.Reservation.IdReservation.Equals(id)
+                    select roomRes
+                    ;
+            q.ToList();
+
+            List<RoomReservation> deleteRoom = q.ToList();
+
+            int idRoomReservationToDelete = deleteRoom[0].IdRoomReservation;
+
+            RoomReservation roomReservation = new RoomReservation();
+
+            roomReservation = await db.RoomReservations.FindAsync(idRoomReservationToDelete);
             if (roomReservation == null)
             {
                 return NotFound();

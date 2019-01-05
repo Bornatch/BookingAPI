@@ -328,9 +328,9 @@ namespace DemoWebApi.Controllers
         }
 
         // GET: api/Hotels
-        public IQueryable<Hotel> GetHotels()
+        public List<Hotel> GetHotels()
         {
-            return db.Hotels;
+            return db.Hotels.ToList();
         }
 
         public DateTime convertToDate(string dateText)

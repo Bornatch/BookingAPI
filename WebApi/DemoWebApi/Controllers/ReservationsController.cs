@@ -104,7 +104,7 @@ namespace DemoWebApi.Controllers
         }
 
         // POST: api/Reservations/AddNewReservation/1/01-01-2019/02-01-2019/13.0
-        [AcceptVerbs("GET", "DELETE")]
+        [AcceptVerbs("GET", "PUT")]
         [ResponseType(typeof(Reservation))]
         public async Task<IHttpActionResult> AddNewReservation(int idClient, string dateStart, string dateEnd, string totalPrice)
         {
@@ -136,7 +136,9 @@ namespace DemoWebApi.Controllers
         [ResponseType(typeof(Reservation))]
         public async Task<IHttpActionResult> DeleteReservation(int id)
         {
-            Reservation reservation = await db.Reservations.FindAsync(id);
+            Reservation reservation = new Reservation();
+
+            reservation = await db.Reservations.FindAsync(id);
             if (reservation == null)
             {
                 return NotFound();
