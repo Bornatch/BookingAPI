@@ -26,14 +26,15 @@ namespace DemoWebApi.Controllers
         //id = id Client
         public List<Reservation> GetAllReservations(int id)
         {
-            List<Reservation> results = null;
+            List<Reservation> results = new List<Reservation>();
 
             var q = from res in db.Reservations
                     where res.IdClient.Equals(id)
                     select res
                     ;
+            q.ToList();
 
-            foreach (Reservation r in q)
+            foreach (Reservation r in q.ToList())
             {
                 results.Add(r);
             }
@@ -145,23 +146,6 @@ namespace DemoWebApi.Controllers
             await db.SaveChangesAsync();
 
             return Ok(reservation);
-        }
-
-        [AcceptVerbs("GET", "DELETE")]
-        [ResponseType(typeof(RoomReservation))]
-        public async Task<IHttpActionResult> DeleteRoomReservation(int id)
-        {
-            RoomReservation roomReservation = await db.RoomReservations.FindAsync(id);
-            if(roomReservation == null)
-            {
-                return NotFound();
-            }
-
-            db.RoomReservations.Remove(roomReservation);
-            await db.SaveChangesAsync();
-
-            return Ok(roomReservation);
-
         }
 
         protected override void Dispose(bool disposing)

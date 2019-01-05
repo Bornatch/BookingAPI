@@ -82,6 +82,7 @@ namespace DemoWebApi.Controllers
         }
 
         // DELETE: api/RoomReservations/5
+        [AcceptVerbs("GET", "DELETE")]
         [ResponseType(typeof(RoomReservation))]
         public async Task<IHttpActionResult> DeleteRoomReservation(int id)
         {
