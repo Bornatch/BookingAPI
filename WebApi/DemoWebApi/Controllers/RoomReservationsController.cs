@@ -37,33 +37,39 @@ namespace DemoWebApi.Controllers
             return Ok(roomReservation);
         }
 
-        //api/RoomReservations/AddNewRoomReservation/1/1
+        // PUT: api/RoomReservations/5
         [ResponseType(typeof(void))]
-        [AcceptVerbs("GET", "INSERT")]
-        public async Task<IHttpActionResult> AddNewRoomReservation(int idRoom, int idReservation)
+        public async Task<IHttpActionResult> PutRoomReservation(int id, RoomReservation roomReservation)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            RoomReservation roomReservation = new RoomReservation();
-            roomReservation.Room = await db.Rooms.FindAsync(idRoom);
-            if (roomReservation.Room == null)
+
+            if (id != roomReservation.IdRoomReservation)
             {
-                return NotFound();
+                return BadRequest();
             }
 
-            roomReservation.Reservation = await db.Reservations.FindAsync(idReservation);
-            if (roomReservation.Reservation == null)
+            db.Entry(roomReservation).State = EntityState.Modified;
+
+            try
             {
-                return NotFound();
+                await db.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!RoomReservationExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
             }
 
-
-            db.RoomReservations.Add(roomReservation);
-            await db.SaveChangesAsync();
-
-            return CreatedAtRoute("DefaultApi", new { id = roomReservation.IdRoomReservation }, roomReservation);
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
         // POST: api/RoomReservations
@@ -82,7 +88,6 @@ namespace DemoWebApi.Controllers
         }
 
         // DELETE: api/RoomReservations/5
-        [AcceptVerbs("GET", "DELETE")]
         [ResponseType(typeof(RoomReservation))]
         public async Task<IHttpActionResult> DeleteRoomReservation(int id)
         {

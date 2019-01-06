@@ -34,3 +34,10 @@ C:\Users\Bornatch\Documents\GitHub\BookingAPI\WebApi\DemoWebApi\obj\Release\WebA
 C:\Users\Bornatch\Documents\GitHub\BookingAPI\WebApi\DemoWebApi\obj\Release\WebApi.csproj.CopyComplete
 C:\Users\Bornatch\Documents\GitHub\BookingAPI\WebApi\DemoWebApi\obj\Release\DemoWebApi.dll
 C:\Users\Bornatch\Documents\GitHub\BookingAPI\WebApi\DemoWebApi\obj\Release\DemoWebApi.pdb
+C:\Users\Bornatch\Documents\GitHub\BookingAPI\WebApi\DemoWebApi\bin\Microsoft.Azure.KeyVault.Core.dll
+C:\Users\Bornatch\Documents\GitHub\BookingAPI\WebApi\DemoWebApi\bin\Microsoft.WindowsAzure.Configuration.dll
+C:\Users\Bornatch\Documents\GitHub\BookingAPI\WebApi\DemoWebApi\bin\Microsoft.WindowsAzure.Storage.dll
+C:\Users\Bornatch\Documents\GitHub\BookingAPI\WebApi\DemoWebApi\bin\Microsoft.Azure.KeyVault.Core.xml
+C:\Users\Bornatch\Documents\GitHub\BookingAPI\WebApi\DemoWebApi\bin\Microsoft.WindowsAzure.Configuration.xml
+C:\Users\Bornatch\Documents\GitHub\BookingAPI\WebApi\DemoWebApi\bin\Microsoft.WindowsAzure.Storage.pdb
+C:\Users\Bornatch\Documents\GitHub\BookingAPI\WebApi\DemoWebApi\bin\Microsoft.WindowsAzure.Storage.xml
